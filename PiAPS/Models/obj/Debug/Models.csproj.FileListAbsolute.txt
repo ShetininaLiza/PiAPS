@@ -1,0 +1,6 @@
+C:\Users\sheti\source\repos\PiAPS\Models\bin\Debug\Models.dll
+C:\Users\sheti\source\repos\PiAPS\Models\bin\Debug\Models.pdb
+C:\Users\sheti\source\repos\PiAPS\Models\obj\Debug\Models.csprojAssemblyReference.cache
+C:\Users\sheti\source\repos\PiAPS\Models\obj\Debug\Models.csproj.CoreCompileInputs.cache
+C:\Users\sheti\source\repos\PiAPS\Models\obj\Debug\Models.dll
+C:\Users\sheti\source\repos\PiAPS\Models\obj\Debug\Models.pdb
