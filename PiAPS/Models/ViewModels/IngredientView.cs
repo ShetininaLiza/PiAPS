@@ -16,5 +16,7 @@ namespace Models.ViewModels
 
         [DisplayName("Количество")]
         public int Count { get; set; }
+        [DisplayName("Единицы измерения")]
+        public string Unit { get; set; }
     }
 }

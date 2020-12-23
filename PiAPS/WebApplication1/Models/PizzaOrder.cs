@@ -13,7 +13,6 @@ namespace WebApplication.Models
         public int Id { get; set; }
         public int OrderId { get; set; }
         public int PizzaId { get; set; }
-        [ForeignKey("User")]
         public int PizzamakerId { get; set; }
         [Required]
         public string Status { get; set; }

@@ -24,5 +24,6 @@ namespace WebApplication
         public virtual DbSet<Pizza> Pizzas { set; get; }
         public virtual DbSet<Proportion> Proportions { set; get; }
         public virtual DbSet<Ingredient> Ingredients { set; get; }
+        public virtual DbSet<Client> Clients { set; get; }
     }
 }

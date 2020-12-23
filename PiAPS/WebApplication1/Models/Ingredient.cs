@@ -15,6 +15,8 @@ namespace WebApplication.Models
         public string Name { get; set; }
         [Required]
         public int Count { get; set; }
+        [Required]
+        public string Unit { get; set; }
 
         [ForeignKey("IngredientId")]
         public virtual List<Proportion> Proportions { set; get; }

@@ -82,9 +82,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(232, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.Size = new System.Drawing.Size(12, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "кг";
+            this.label3.Text = "г";
             // 
             // label4
             // 
@@ -134,9 +134,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(244, 196);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(18, 13);
+            this.label7.Size = new System.Drawing.Size(12, 13);
             this.label7.TabIndex = 10;
-            this.label7.Text = "кг";
+            this.label7.Text = "г";
             // 
             // listBox
             // 

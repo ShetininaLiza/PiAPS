@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace WebApplication.Models
 {
-    public class User
+    public class Client
     {
         public int Id { get; set; }
         [Required]
@@ -23,7 +22,8 @@ namespace WebApplication.Models
         [Required]
         public Roles Role { get; set; }
         public string Comment { get; set; }
-        [ForeignKey("PizzamakerId")]
-        public virtual List<PizzaOrder> PizzaOrders { set; get; }
+        [ForeignKey("ClientId")]
+        public virtual List<Order> Orders { set; get; }
+
     }
 }

@@ -21,7 +21,7 @@ namespace PizzaAdmin
         public FormCreatePizza()
         {
             InitializeComponent();
-            var names=APIClient.GetRequest<List<IngredientView>>($"api/main/getingredientlist").Select(rec => rec.Name).ToArray();
+            var names=APIClient.GetRequest<List<IngredientView>>($"api/ingredient/read").Select(rec => rec.Name).ToArray();
             comboBoxIngredient.Items.AddRange(names);
         }
 
@@ -29,16 +29,20 @@ namespace PizzaAdmin
         {
             if (id.HasValue)
             {
+                Console.WriteLine("id=" + id);
                 try
                 {
-                    var view = APIClient.GetRequest<List<PizzaView>>($"api/main/getpizzalist").FirstOrDefault(rec => rec.Id == id);
+                    var list = APIClient.GetRequest<List<PizzaView>>($"api/main/read");
+                    var view = list.FirstOrDefault(rec => rec.Id == id);
                     if (view != null)
                     {
                         textBoxName.Text = view.Name;
                         textBoxWeigth.Text = view.Weigth.ToString();
+                        Console.WriteLine("Count: " + view.Ingredients.Count);
                         foreach (var i in view.Ingredients)
                         {
-                            string st =i.Value.Item1 + " (" + i.Value.Item2 + ") кг;";
+                            Console.WriteLine("Item1: "+i.Value.Item1);
+                            string st =i.Value.Item1 + " (" + i.Value.Item2 + ") г;";
                             listBox.Items.Add(st);
                         }
                         //LoadData();
@@ -57,16 +61,21 @@ namespace PizzaAdmin
         {
             try
             {
-                APIClient.PostRequest($"api/main/createpizza", new PizzaModel
+                foreach (var i in ingredients)
+                {
+                    Console.WriteLine("Save:"+i.Key + ", " + i.Value.Item1 + ", " + i.Value.Item2);
+                }
+                APIClient.PostRequest($"api/main/create", new PizzaModel
                 {
                     Id = id,
                     Name = textBoxName.Text,
                     Weigth = Convert.ToInt32(textBoxWeigth.Text),
-                    Ingredients=ingredients
+                    Ingredients=ingredients,
                 });
                 MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
                 Close();
+                
             }
             catch (Exception ex)
             {
@@ -91,10 +100,14 @@ namespace PizzaAdmin
                 MessageBox.Show("Выберите ингредиент");
             }
             if (ingredients.ContainsKey(id.ToString()))
-                ingredients[id.ToString()]= (comboBoxIngredient.SelectedItem.ToString(), textBoxWeigthIngredient.Text);
+            {
+                ingredients[id.ToString()] = (comboBoxIngredient.SelectedItem.ToString(), textBoxWeigthIngredient.Text);
+            }
             else
+            {
                 ingredients.Add(id.ToString(), (comboBoxIngredient.SelectedItem.ToString(), textBoxWeigthIngredient.Text));
-            listBox.Items.Add(comboBoxIngredient.SelectedItem.ToString() + ", " + textBoxWeigthIngredient.Text + " кг;");
+            }
+            listBox.Items.Add(comboBoxIngredient.SelectedItem.ToString() + ", " + textBoxWeigthIngredient.Text + " г;");
         }
     }
 }

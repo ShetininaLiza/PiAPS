@@ -25,3 +25,7 @@ C:\Users\sheti\source\repos\PiAPS\PizzaAdmin\obj\Debug\PizzaAdmin.FormMain.resou
 C:\Users\sheti\source\repos\PiAPS\PizzaAdmin\obj\Debug\PizzaAdmin.FormUsers.resources
 C:\Users\sheti\source\repos\PiAPS\PizzaAdmin\obj\Debug\PizzaAdmin.FormAddComent.resources
 C:\Users\sheti\source\repos\PiAPS\PizzaAdmin\obj\Debug\PizzaAdmin.FormUser.resources
+C:\Users\sheti\source\repos\PiAPS\PizzaAdmin\obj\Debug\PizzaAdmin.FormCreatePizza.resources
+C:\Users\sheti\source\repos\PiAPS\PizzaAdmin\obj\Debug\PizzaAdmin.FormIngredients.resources
+C:\Users\sheti\source\repos\PiAPS\PizzaAdmin\obj\Debug\PizzaAdmin.FormPizzas.resources
+C:\Users\sheti\source\repos\PiAPS\PizzaAdmin\obj\Debug\PizzaAdmin.FormIngredient.resources

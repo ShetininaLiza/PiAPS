@@ -20,7 +20,8 @@ namespace WebApplication.Models
         [Required]
         public DateTime DateCreate { get; set; }
         public DateTime? DateImplement { get; set; }
-        public User Client { get; set; }
+        public Client Client { get; set; }
+        
         [ForeignKey("OrderId")]
         public virtual List<PizzaOrder> PizzaOrders { set; get; }
     }

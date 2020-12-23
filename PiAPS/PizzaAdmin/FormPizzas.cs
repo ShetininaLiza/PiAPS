@@ -22,7 +22,10 @@ namespace PizzaAdmin
         private void создатьПиццуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormCreatePizza form = new FormCreatePizza();
-            form.ShowDialog();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadData();
+            }
         }
 
         private void изменитьДанныеПиццыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,7 +51,7 @@ namespace PizzaAdmin
                     int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
                     try
                     {
-                        APIClient.PostRequest($"api/main/deletepizza", new PizzaModel
+                        APIClient.PostRequest($"api/main/delete", new PizzaModel
                         {
                             Id = id
                         });
@@ -70,11 +73,12 @@ namespace PizzaAdmin
 
         private void LoadData()
         {
-            var list=APIClient.GetRequest<List<PizzaView>>($"api/main/getpizzalist");
+            var list=APIClient.GetRequest<List<PizzaView>>($"api/main/read");
             if (list != null)
             {
                 dataGridView.DataSource = list;
                 dataGridView.Columns[0].Visible = false;
+                dataGridView.Columns[3].Visible = false;
                 dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
         }

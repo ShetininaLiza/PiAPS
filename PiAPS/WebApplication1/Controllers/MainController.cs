@@ -10,36 +10,31 @@ using Models.ViewModels;
 
 namespace WebApplication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/main/[action]")]
     [ApiController]
     public class MainController : ControllerBase
     {
         private readonly IPizzaLogic _pizza;
-        private readonly IIngredientLogic _ingredient;
-
-        public MainController(IPizzaLogic pizza, IIngredientLogic ingredient)
+        
+        public MainController(IPizzaLogic pizza)
         {
             _pizza = pizza;
-            _ingredient = ingredient;
         }
         [HttpGet]
-        public List<PizzaView> GetPizzaList() => _pizza.Read(null).ToList(); //Convert(rec)).ToList();
+        public List<PizzaView> Read() => _pizza.Read(null).ToList(); //Convert(rec)).ToList();
         [HttpPost]
-        public void CreatePizza(PizzaModel model) => _pizza.CreateOrUpdate(model);
+        public void Create(PizzaModel model)
+        {
+            Console.WriteLine("Main count: " + model.Ingredients.Count);
+            foreach (var i in model.Ingredients)
+            {
+                Console.WriteLine("Main: " + i.Key + ", " + i.Value.Item1 + ", " + i.Value.Item2);
+            }
+            _pizza.CreateOrUpdate(model);
+        }
         [HttpPost]
-        public void UpdatePizza(PizzaModel model) => _pizza.CreateOrUpdate(model);
+        public void Update(PizzaModel model) => _pizza.CreateOrUpdate(model);
         [HttpPost]
-        public void DeletePizza(PizzaModel model) => _pizza.Delete(model);
-
-        [HttpGet]
-        public List<IngredientView> GetIngredientList() => _ingredient.Read(null).ToList(); //Convert(rec)).ToList();
-        [HttpGet]
-        public IngredientView GetIngredient(int id) => _ingredient.Read(new IngredientModel { Id = id })?[0]; //Convert(_product.Read(new ShipBindingModel { Id = productId })?[0]);
-        [HttpPost]
-        public void CreateIngredient(IngredientModel model) => _ingredient.CreateOrUpdate(model);
-        [HttpPost]
-        public void UpdateIngredient(IngredientModel model) => _ingredient.CreateOrUpdate(model);
-        [HttpPost]
-        public void DeleteIngredient(IngredientModel model) => _ingredient.Delete(model);
+        public void Delete(PizzaModel model) => _pizza.Delete(model);
     }
 }
